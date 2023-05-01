@@ -4,13 +4,18 @@ Control desk fan to cool HDDs.
 
 ## Motivation
 
-Test FreeBSD install in crap case with poor air flow. To keep drives cool an ordinary desk fan is positioned to blow in the froint of the case with the bulkhead covers removed. This keeps the drives below 40C during a scrub but is not needed at all times. It can be connected to a smart switch that can be turned on/off to maintain reasonable temperature.
+Test FreeBSD install in crap case with poor air flow. To keep drives cool an ordinary desk fan is positioned to blow in the front of the case with the bulkhead covers removed. This keeps the drives below 40C during a scrub but is not needed at all times. It can be connected to a smart switch that can be turned on/off to maintain reasonable temperature.
 
-### Compoinents
+### Components
 
 * Desk fan.
 * TP-Link HS100 (WiFi) Smart plug.
 * <https://github.com/HankB/tplink-smartplug> to manipulate the smart plug.
+
+### Requirements
+
+* `bash`
+* `jq`
 
 ## Strategy
 
@@ -23,4 +28,8 @@ On FreeBSD it was convenient to link `python3.9` tp `python3`.
 ```text
 sudo ln -sf /usr/local/bin/python3.9 /usr/local/bin/python3
 ```
+
+The script uses `bash` which is not installed by default. It is not easy to determine if the user is root using `sh` on both Linux and BSD.
+
+The script uses `jq` to parse the results from querying the script in order to determine the current state.
 
